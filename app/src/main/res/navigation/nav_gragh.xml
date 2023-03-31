@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.example.bmicalculator.splash.SplashFragment"
+        android:label="SplashFragment">
+        <action
+            android:id="@+id/action_splashFragment_to_bmisFragment"
+            app:destination="@id/bmisFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/bmisFragment"
+        android:name="com.example.bmicalculator.bmis.BmisFragment"
+        android:label="BmisFragment">
+        <action
+            android:id="@+id/action_bmisFragment_to_addNewBmiFragment"
+            app:destination="@id/addNewBmiFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addNewBmiFragment"
+        android:name="com.example.bmicalculator.addnewbmi.AddNewBmiFragment"
+        android:label="addNewBmiFragment">
+        <action
+            android:id="@+id/action_addNewBmiFragment_to_resultFragment"
+            app:destination="@id/resultFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/resultFragment"
+        android:name="com.example.bmicalculator.result.ResultFragment"
+        android:label="ResultFragment">
+        <action
+            android:id="@+id/action_resultFragment_to_bmisFragment"
+            app:destination="@id/bmisFragment" />
+        <action
+            android:id="@+id/action_resultFragment_to_addNewBmiFragment"
+            app:destination="@id/addNewBmiFragment" />
+        <argument
+            android:name="bmi"
+            android:defaultValue="@null"
+            app:argType="com.example.bmicalculator.models.BMI"
+            app:nullable="true" />
+    </fragment>
+</navigation>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+
+        <variable
+            name="bmi"
+            type="com.example.bmicalculator.models.BMI" />
+
+        <variable
+            name="viewmodel"
+            type="com.example.bmicalculator.bmis.BmisViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/item_bmi_margin"
+        android:background="@color/colorPrimary"
+        android:onLongClick="@{(view) -> viewmodel.openDeleteBmiDialog(view, bmi)}">
+
+        <View
+            android:id="@+id/view_bmiState"
+            android:layout_width="10dp"
+            android:layout_height="0dp"
+            android:background="@color/green"
+            app:context="@{context}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:setBmiStateColor="@{bmi.bmi()}" />
+
+        <TextView
+            android:id="@+id/tv_bmi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/item_bmi_margin"
+            android:layout_marginTop="@dimen/item_bmi_margin"
+            android:text="@{@string/calculated_bmi(bmi.bmi())}"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            app:layout_constraintLeft_toRightOf="@+id/view_bmiState"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="26.9" />
+
+        <TextView
+            android:id="@+id/tv_weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/item_bmi_margin"
+            android:layout_marginBottom="@dimen/item_bmi_margin"
+            android:text="@{@string/weight_in_kg(bmi.weight)}"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/view_bmiState"
+            app:layout_constraintTop_toBottomOf="@+id/tv_bmi"
+            tools:text="76 kg" />
+
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/item_bmi_margin"
+            android:text="@{bmi.date}"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="2020.07.18" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">BMI Calculator</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="bmi_calculator">BMI Calculator</string>
+    <string name="add_bmi">Add BMI</string>
+    <string name="height">Height</string>
+    <string name="cm">cm</string>
+    <string name="_0">0</string>
+    <string name="weight">Weight</string>
+    <string name="invalid_value">Invalid value</string>
+    <string name="calculate_your_bmi">Calculate Your BMI</string>
+
+
+    <string name="height_is_empty">Height is empty</string>
+    <string name="weight_is_empty">Weight is empty</string>
+    <string name="your_result">Your Result</string>
+    <string name="normal_bmi_range">Normal BMI range</string>
+    <string name="you_have_a_normal_body_weight_ngood_job">You have a normal body weight\nGood Job!</string>
+    <string name="re_calculate_your_bmi">Re-calculate your BMI</string>
+
+    <string name="calculated_bmi">%.1f</string>
+    <string name="weight_in_kg">%1$d kg</string>
+    <string name="_18_5_25">18.5 – 25</string>
+    <string name="kg_m2">kg/m2</string>
+    <string name="save_bmi">Save BMI</string>
+
+    <string name="delete_bmi_are_you_sure">Delete BMI\nAre you sure?</string>
+    <string name="delete">Delete</string>
+    <string name="cancel">Cancel</string>
+    <string name="kg">kg</string>
+
+
+    <string name="your_bmis">Your BMIs</string>
+</resources>

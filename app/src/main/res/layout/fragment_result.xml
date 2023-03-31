@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.example.bmicalculator.result.ResultViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimaryDark"
+        tools:context=".result.ResultFragment">
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/mcv_result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/add_bmi_card_margin"
+            android:layout_marginTop="@dimen/add_bmi_card_margin"
+            android:elevation="@dimen/add_bmi_card_elevation"
+            app:cardBackgroundColor="@color/colorPrimary"
+            app:cardCornerRadius="@dimen/add_bmi_card_elevation"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/add_bmi_card_padding">
+
+                <TextView
+                    android:id="@+id/tv_evaluation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/add_bmi_card_unit_textsize"
+                    app:context="@{context}"
+                    app:getShortEvaluation="@{viewmodel.resultCalculatedBmi}"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:setBmiStateColor="@{viewmodel.resultCalculatedBmi}"
+                    tools:text="Normal" />
+
+                <TextView
+                    android:id="@+id/tv_result"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/add_bmi_card_margin"
+                    android:text="@{@string/calculated_bmi(viewmodel.resultCalculatedBmi)}"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/add_bmi_card_value_textsize_large"
+                    android:textStyle="bold"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_evaluation"
+                    tools:text="22.1" />
+
+                <TextView
+                    android:id="@+id/tv_bmiRange_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/add_bmi_card_margin"
+                    android:text="@string/normal_bmi_range"
+                    android:textColor="@color/light_grey"
+                    android:textSize="@dimen/add_bmi_card_unit_textsize"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_result" />
+
+                <LinearLayout
+                    android:id="@+id/ll_normalRange"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_bmiRange_title">
+
+                    <TextView
+                        android:id="@+id/tv_bmiRange_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/_18_5_25"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/add_bmi_card_unit_textsize" />
+
+                    <TextView
+                        android:id="@+id/tv_bmiRange_unit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/add_bmi_card_unit_margin"
+                        android:text="@string/kg_m2"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/add_bmi_card_unit_textsize"
+                        app:layout_constraintBottom_toBottomOf="@+id/tv_bmiRange_value"
+                        app:layout_constraintLeft_toRightOf="@+id/tv_bmiRange_value"
+                        app:layout_constraintTop_toTopOf="@+id/tv_bmiRange_value" />
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_recalculate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/add_bmi_card_margin_large"
+                    android:backgroundTint="@color/colorPrimaryDark"
+                    android:padding="@dimen/add_bmi_card_margin"
+                    android:text="@string/re_calculate_your_bmi"
+                    android:textColor="@color/white"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ll_normalRange" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <Button
+            android:id="@+id/btn_saveBmi"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/add_bmi_card_margin"
+            android:backgroundTint="@color/colorAccent"
+            android:onClick="@{() -> viewmodel.saveBmi()}"
+            android:padding="@dimen/add_bmi_card_margin"
+            android:text="@string/save_bmi"
+            android:textColor="@color/white"
+            android:textSize="@dimen/add_bmi_card_title_textsize"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mcv_result"
+            app:layout_constraintVertical_bias="1" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
